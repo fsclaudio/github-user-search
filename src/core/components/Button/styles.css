@@ -1,0 +1,20 @@
+.btn-default{
+    height: 40px;
+    width: 101px;
+    border-radius: 4px;
+    display: inline-block;
+    border: none;
+    background: #1890FF;
+    align-items: center;
+    text-align: center; 
+    line-height: 24px;
+    color: #FFF;
+    font-weight: normal;
+    font-size: 16px;
+    text-decoration: none;
+    cursor: pointer;
+    outline: none;
+   
+}
+
+.btn-default:hover {background-color:#0a4e8d;}

@@ -1,9 +1,10 @@
 import React from 'react';
 import "./styles.css";
+import { Link } from "react-router-dom";
 
 const Navbar=() => (
  <nav className="main-navbar">
-    <a href="Home" className="nav-text">Bootcamp DevSuperior </a> 
+    <Link to="/" className="nav-text">Bootcamp DevSuperior </Link> 
  </nav>   
 ) ;
 

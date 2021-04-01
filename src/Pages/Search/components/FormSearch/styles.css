@@ -1,0 +1,35 @@
+.search-base-form-container {
+   width: 90%;
+   margin: 20px auto;
+   display: flex;
+   flex-direction: column;
+   background: #E6F7FF;
+   border-radius: 16px;
+   padding-top: 30px;
+   padding-bottom: 40px;
+}
+.search-base-form{
+   
+    height: 270px;
+    width: 1251px;
+    border-radius: 16px;
+}
+
+.search-base-form h1 {
+    margin: 0;
+  }
+
+.search-form-title{
+    padding-top: 66px;
+    padding-left: 50px;
+    font-weight: 500;
+    font-size: 38px;
+    line-height: 46px;
+     color: #262626;
+}
+
+.search-form-actions {
+    margin-top: 24px;
+    margin-left: 50px;
+    
+}

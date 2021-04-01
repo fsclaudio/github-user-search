@@ -1,0 +1,36 @@
+.detail-base-form-container {
+    width: 730px;
+    height: 247px;
+    left: 0px;
+    top: 0px;
+    background: #FFFFFF;
+    border: 1px solid #D9D9D9;
+    box-sizing: border-box;
+    border-radius: 6px;
+ }
+ .detail-base-form{
+    
+     height: 270px;
+     width: 1251px;
+     border-radius: 16px;
+ }
+ 
+ .detail-base-form h1 {
+     margin: 0;
+   }
+ 
+ .detail-form-title{
+    font-weight: 500;
+    font-size: 20px;
+    line-height: 28px;
+    display: flex;
+    align-items: center;
+    color: #1890FF;
+ }
+ 
+ .detail-form-actions {
+     margin-top: 24px;
+     margin-left: 50px;
+     
+ }
+ 

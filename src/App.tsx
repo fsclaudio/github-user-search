@@ -1,11 +1,13 @@
 import Reac from 'react';
-import Navbar from './core/components/Navbar';
-
+import { ToastContainer } from 'react-toastify';
+import Routes from './Routes';
+import 'react-toastify/dist/ReactToastify.css';
 const App =( ) => {
     return(
-        <div>
-            <Navbar />  
-        </div>
+        <>
+            <Routes />
+           <ToastContainer />
+        </>
        
     )
 }

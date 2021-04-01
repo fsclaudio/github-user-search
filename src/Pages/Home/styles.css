@@ -1,0 +1,53 @@
+.home-container {
+    padding-top: 100px;
+    height: calc(100vh - 254px);
+  }
+  
+  .home-container h1 {
+    margin: 0;
+  }
+  
+  .home-content {
+    display: flex;
+    justify-content: left;
+    padding-left: 120px;
+
+  }
+  
+  .home-title {
+    font-size: 48px;
+    line-height: 64px;
+    display: flex;
+    align-items: center;
+    letter-spacing: 0.02em;
+    color: #062847;
+    padding-top: 179x;
+  }
+  
+  .home-subtitle {
+    font-size: 20px;
+    line-height: 36px;
+    color: #5A6774;
+    padding-top: 24px;
+  }
+  
+  .home-btn-order {
+    background-color: var(--primary-color);
+    border-radius: 10px;
+    height: 70px;
+    width: 235px;
+    display: inline-block;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+    font-size: 24px;
+    letter-spacing: -0.015em;
+    color: #FFF;
+  }
+  
+.home-email {
+  color: #1890FF;
+}
+  
+ 
