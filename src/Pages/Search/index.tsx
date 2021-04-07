@@ -1,15 +1,16 @@
 import React, { useState } from 'react';
 import FormSearch from './components/FormSearch';
-import ImageLoader from './components/Loaders/ImageLoarder';
-import InfoLoader from './components/Loaders/InfoLoader';
-import GitImage from '../../core/assets/github-mark.png';
 import './styles.css';
 import ButtonDefault from '../../core/components/Button/Button';
 import FormDetail from './components/FormsDetail';
 import BoxDetail from './components/BoxDetail';
 import dayjs from 'dayjs';
+import { Link } from 'react-router-dom';
+import axios from 'axios';
+import Mensagem from './components/Message/Message';
 
-type FormState = {
+
+type InfoForm = {
   avatar_url: string;
   public_repos: string,
   followers: string,
@@ -18,11 +19,13 @@ type FormState = {
   blog: string;
   location: string;
   created_at: string;
+  html_url: string;
 }
+
 
 const Search = () => {
   const [search, setSearch] = useState('');
-  const [userData, setUserData] = useState<FormState>(
+  const [userData, setUserData] = useState<InfoForm>(
     {
       avatar_url: '',
       public_repos: '',
@@ -31,24 +34,31 @@ const Search = () => {
       company: '',
       blog: '',
       location: '',
-      created_at: ''
+      created_at: '',
+      html_url: ''
     }
   );
-  const [isLoading, setIsLoading] = useState(false);
-
+ 
+  const [isShow, setIsShow] = useState(false);
+  
+  const BASE_URL = 'https://api.github.com/users'
   const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
-    setIsLoading(true)
-    
-
-    fetch(`https://api.github.com/users/${search}`)
-      .then(response => response.json())
-      .then(userResponse => setUserData(userResponse))
-      .finally(() => {
-        setIsLoading(false)
-        // console.log(userData);
-        // console.log(search);
-      })
+    setIsShow(true)
+ 
+    axios(`${BASE_URL}/${search}`)
+    .then(response => setUserData(response.data))
+    .catch(() => {setIsShow(false); Mensagem()});
+    console.log(userData);
+    //fetch(`https://api.github.com/users/${search}`)
+    //  .then(response => response.json())
+    //  .then(userResponse => setUserData(userResponse))
+   //   .finally(() => {
+     // setIsLoading(false)
+    //  setIsShow(false)
+    //     console.log(userData);
+   //      console.log(search);
+   //   })
   }
   const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     setSearch(event.target.value)
@@ -67,60 +77,26 @@ const Search = () => {
           </div>
         </FormSearch>
       </form>
+     
+       {isShow &&(
       <div className="result-search-container">
         <div className="info-detail">
-          <div>
-          {!userData  && (
-             <img
-             src={GitImage}
-             alt=""
-             height="200px"
-           />
-                )}
-                </div>
 
-          {isLoading ? <ImageLoader /> : (
             <img
               src={userData.avatar_url}
               alt=""
               height="200px"
-            />)}
-          <div className="position-detail">
-            <div>
-              {!userData && (<>
-                <div className="btn-box">
-                  <BoxDetail title="Repositorios Publicos:"></BoxDetail>
-                  <BoxDetail title="Seguidores:"></BoxDetail>
-                  <BoxDetail title="Seguindo: "></BoxDetail>
-                </div>
-                <FormDetail title="Informações">
-                  <div>
-                    <input className="search-box-detail"
-                      required
-                      value="Empresa:"
-                      placeholder="Empresa" />
-                    <input className="search-box-detail"
-                      required
-                      value="Web Site/Blog"
-                      placeholder="Web Site/Blog" />
-                    <input className="search-box-detail"
-                      required
-                      value="Localidade:"
-                      placeholder="Localidade" />
-                    <input className="search-box-detail"
-                      required
-                      value="Membro desde:"
-                      placeholder="Membro desde:" />
-                  </div>
-                </FormDetail>
-              </>
-              )}
-              {isLoading ? <InfoLoader /> : (
-                <>
+            />
+             
+              <div className="position-detail">
+                <div>
+               
                   <div className="btn-box">
+                
                     <BoxDetail title={`Repositorios Publicos: ${userData.public_repos}`}></BoxDetail>
                     <BoxDetail title={`Seguidores: ${userData.followers}`}></BoxDetail>
-                    <BoxDetail title={`Seguindo: ${userData.following}`}></BoxDetail>
+                    <BoxDetail title={`Seguindo: ${userData.following}`}></BoxDetail> 
+                    
                   </div>
                   <FormDetail title="Informações">
                     <div>
@@ -142,15 +118,16 @@ const Search = () => {
                         placeholder="Membro desde:" />
                     </div>
                   </FormDetail>
-                </>
-              )}
-            </div>
-          </div>
+                </div>
+
+              </div>
         </div>
         <div className="btn-search">
+        <a target='_blank' href={`${userData.html_url}`} >
           <ButtonDefault text="ver perfil" />
+          </a>
         </div>
-      </div>
+      </div>)}
 
     </>
 
