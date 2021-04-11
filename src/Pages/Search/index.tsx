@@ -8,6 +8,7 @@ import dayjs from 'dayjs';
 import { Link } from 'react-router-dom';
 import axios from 'axios';
 import Mensagem from './components/Message/Message';
+import ImageLoader from './components/Loaders/ImageLoarder';
 
 
 type InfoForm = {
@@ -40,7 +41,6 @@ const Search = () => {
   );
  
   const [isShow, setIsShow] = useState(false);
-  
   const BASE_URL = 'https://api.github.com/users'
   const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
@@ -48,17 +48,8 @@ const Search = () => {
  
     axios(`${BASE_URL}/${search}`)
     .then(response => setUserData(response.data))
-    .catch(() => {setIsShow(false); Mensagem()});
-    console.log(userData);
-    //fetch(`https://api.github.com/users/${search}`)
-    //  .then(response => response.json())
-    //  .then(userResponse => setUserData(userResponse))
-   //   .finally(() => {
-     // setIsLoading(false)
-    //  setIsShow(false)
-    //     console.log(userData);
-   //      console.log(search);
-   //   })
+    .catch(() => { Mensagem(); setIsShow(false); setUserData(userData) });
+   
   }
   const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     setSearch(event.target.value)
@@ -77,18 +68,18 @@ const Search = () => {
           </div>
         </FormSearch>
       </form>
-     
        {isShow &&(
       <div className="result-search-container">
         <div className="info-detail">
-
+          {!userData.avatar_url ?  <ImageLoader/> :(  
             <img
               src={userData.avatar_url}
               alt=""
               height="200px"
             />
-             
+            ) }  
               <div className="position-detail">
+              {!userData.created_at ?  <ImageLoader/> :( 
                 <div>
                
                   <div className="btn-box">
@@ -99,7 +90,9 @@ const Search = () => {
                     
                   </div>
                   <FormDetail title="Informações">
+                  
                     <div>
+                      
                       <input className="search-box-detail"
                         required
                         value={`Empresa: ${userData.company}`}
@@ -117,9 +110,10 @@ const Search = () => {
                         value={`Membro desde: ${createFormatDt}`}
                         placeholder="Membro desde:" />
                     </div>
+                 
                   </FormDetail>
                 </div>
-
+                  )}
               </div>
         </div>
         <div className="btn-search">
