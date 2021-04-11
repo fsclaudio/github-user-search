@@ -5,7 +5,6 @@ import ButtonDefault from '../../core/components/Button/Button';
 import FormDetail from './components/FormsDetail';
 import BoxDetail from './components/BoxDetail';
 import dayjs from 'dayjs';
-import { Link } from 'react-router-dom';
 import axios from 'axios';
 import Mensagem from './components/Message/Message';
 import ImageLoader from './components/Loaders/ImageLoarder';
