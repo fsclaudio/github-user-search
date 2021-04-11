@@ -1,4 +1,3 @@
-import Reac from 'react';
 import { ToastContainer } from 'react-toastify';
 import Routes from './Routes';
 import 'react-toastify/dist/ReactToastify.css';
