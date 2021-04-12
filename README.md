@@ -4,7 +4,7 @@
 
 # Sobre o projeto
 
-user-search-cfs.netlify.app
+https://user-search-cfs.netlify.app/
 
 github-user-search é uma aplicação Web construída como desafio do capitulo 3 durante a 2ª turma do bootcamp DevSuperior (#sds2), evento organizado pela #DevSuperior.
 
