@@ -8,7 +8,7 @@ user-search-cfs.netlify.app
 
 github-user-search é uma aplicação Web construída como desafio do capitulo 3 durante a 2ª turma do bootcamp DevSuperior (#sds2), evento organizado pela #DevSuperior.
 
-A aplicação consiste em uma aplicativo para buscar dados do Github atraves da api do Git, onde os dados são buscado atraves de um get na api, e depois são listados no app web os dados do ususario. 
+A aplicação consiste em uma aplicativo para buscar dados do Github atraves da api do Git, onde os dados são buscado atraves de um get na api passando como parametro o nome de usuario do git, e depois são listados no app web os dados do ususario. 
 
 ## Layout do aplicativo Web
 
